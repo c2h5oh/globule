@@ -32,6 +32,15 @@ import "strings"
 //
 
 func Match(pattern, name string) (matched bool, err error) {
+	// Empty pattern or name always means no match
+	if pattern == "" || name == "" {
+		return false, nil
+	}
+
+	// No special chars in pattern: only exact match
+	if !hasMeta(pattern) {
+		strings.TrimRight("/", pattern)
+	}
 	return false, nil
 }
 
